@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->enum('role', ['super_admin', 'admin_empresa', 'mecanico', 'operador']);
+            $table->foreignId('empresa_id')->nullable()->constrained('empresas')->nullOnDelete();
             $table->rememberToken();
             $table->timestamps();
         });
